@@ -7,12 +7,16 @@ async function main() {
     const pl = 123;
     const pr = 456;
     const {xL, xR} = mimcsponge.hash(pl, pr, 0);
-
-    const content = "{\n  \"hash_left\": \"" + mimcsponge.F.toString(xL)+ "\",\n" 
-        + "  \"hash_right\": \"" + mimcsponge.F.toString(xR)+ "\",\n"
-        + "  \"preimage_left\": " + pl + ",\n"
-        + "  \"preimage_right\": " + pr + "\n}";
-    fs.writeFile(process.argv[2], content, err => {
+    const hash_left = mimcsponge.F.toString(xL);
+    const hash_right = mimcsponge.F.toString(xR);
+    const content = {
+        hash_left,
+        hash_right,
+        preimage_left: pl,
+        preimage_right: pr
+    };
+    
+    fs.writeFile(process.argv[2], JSON.stringify(content), err => {
         if (err) {
             console.error(err);
         }
