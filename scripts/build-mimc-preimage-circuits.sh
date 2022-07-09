@@ -18,8 +18,8 @@ snarkjs r1cs export json mimc_hash_preimage.r1cs mimc_hash_preimage.r1cs.json
 node ../scripts/create_mimc_preimage_inputs.js mimc_preimage_input.json
 
 cd mimc_hash_preimage_js
-node generate_witness.js mimc_hash_preimage.wasm ../mimc_preimage_input.json ../witness.wtns
+node generate_witness.js mimc_hash_preimage.wasm ../mimc_preimage_input.json ../plonk_witness.wtns
 
 cd ..
-snarkjs plonk setup mimc_hash_preimage.r1cs powersOfTau28_hez_final_14.ptau mimc_preimage_final.zkey
-snarkjs zkey export verificationkey mimc_preimage_final.zkey mimc_preimage_verification_key.json
+snarkjs plonk setup mimc_hash_preimage.r1cs powersOfTau28_hez_final_14.ptau mimc_preimage_plonk_final.zkey
+snarkjs zkey export verificationkey mimc_preimage_plonk_final.zkey mimc_preimage_plonk_verification_key.json
