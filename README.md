@@ -10,7 +10,7 @@ File organization
 ## Instructions for measuring the prover and verifier time
 1. `npm install -g snarkjs`
 2. `cargo install zkutil`
-3. *(Optional)* Clone the [rapidsnark](https://github.com/iden3/rapidsnark) in a sibling location to the current repository and compile the prover. The `scripts/build-mimc-*.sh` scripts attempt the following command: `cp ../rapidsnark/build/prover .`
+3. *(Optional)* Clone the [rapidsnark](https://github.com/iden3/rapidsnark) repository in a sibling location to the current repository and compile the prover. The `scripts/build-mimc-*.sh` scripts attempt the following command: `cp ../rapidsnark/build/prover .`
 4. `npm install`
 5. Run the following. This needs to be run only once.
     ```
