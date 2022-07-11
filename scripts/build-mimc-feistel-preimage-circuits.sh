@@ -32,5 +32,26 @@ snarkjs zkey beacon mimc_feistel_hash_preimage_0002.zkey mimc_feistel_preimage_g
 
 snarkjs zkey export verificationkey mimc_feistel_preimage_groth16_final.zkey mimc_feistel_preimage_groth16_verification_key.json
 
-# Assumes this file already exists. Follow instructions at https://github.com/iden3/rapidsnark
-cp ../../rapidsnark/build/prover .
+if [ -f ./prover ]; then
+    echo "rapidsnark prover exists. Skipping"
+elif [ -f ./../../rapidsnark/build/prover ]; then
+# Script assumes this file already exists in a sibling directory to current repo.
+# Follow instructions at https://github.com/iden3/rapidsnark
+    echo "Copying rapidsnark prover from ../../rapidsnark/build/"
+    cp ../../rapidsnark/build/prover .
+else
+    echo "ERROR: rapidsnark/build/prover not found"
+    echo "Script assumes this file already exists in a sibling directory to current repo."
+    echo "Follow instructions at https://github.com/iden3/rapidsnark"
+    exit 1
+fi
+
+if which zkutil >/dev/null; then
+    echo "zkutil is already installed"
+else
+    echo "zkutil is not installed. Run: cargo install zktuil"
+    exit 1
+fi
+
+# zkutil setup
+zkutil setup -c mimc_feistel_hash_preimage.r1cs -p mimc_feistel_params.bin
