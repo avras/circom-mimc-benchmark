@@ -44,13 +44,12 @@ else
     echo "ERROR: rapidsnark/build/prover not found"
     echo "Script assumes this file already exists in a sibling directory to current repo."
     echo "Follow instructions at https://github.com/iden3/rapidsnark"
-    exit 1
 fi
 
 if which zkutil >/dev/null; then
     echo "zkutil is already installed"
 else
-    echo "zkutil is not installed. Run: cargo install zktuil"
+    echo "ERROR: zkutil is not installed. Run: cargo install zktuil"
     exit 1
 fi
 
